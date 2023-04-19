@@ -3,7 +3,6 @@ local lsp = require('lsp-zero').preset("recommended")
 lsp.ensure_installed({
 	'tsserver',
 	'eslint',
-	'sumneko_lua',
 	'rust_analyzer',
 })
 
@@ -23,6 +22,8 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 	vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
 	vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+
 end)
 
 -- (Optional) Configure lua language server for neovim
